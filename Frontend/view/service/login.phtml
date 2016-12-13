@@ -1,0 +1,18 @@
+<?php
+
+$where = vsprintf(
+    '`email` = \'%s\' AND `password` = \'%s\'',
+    [
+        addcslashes($_POST['email'], '\''),
+        addcslashes($_POST['password'], '\''),
+    ]
+);
+
+$user = reset(\Backend\Blog\User::get($where));
+
+if ($user instanceof \Backend\Blog\User) {
+    echo 'OK';
+    \Backend\Auth\Storage::getInstance()->setIdentity($user->getId());
+} else {
+    echo 'Not ok';
+}

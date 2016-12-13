@@ -1,0 +1,13 @@
+<?php
+
+var_dump(\Backend\Auth\Storage::getInstance()->getIdentity());die;
+
+?>
+
+<form action="service/login" method="post">
+    <input type="text" name="email">
+    <br>
+    <input type="text" name="password">
+    <br>
+    <button>Log in</button>
+</form>
